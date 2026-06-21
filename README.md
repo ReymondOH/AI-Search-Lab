@@ -5,8 +5,7 @@
 AI Search Lab is a single-page browser application with two connected modules:
 
 - Module A: an 8-puzzle solver using BFS, Dijkstra, and A* search.
-- Module B: Tic-Tac-Toe with Human vs AI and AI vs AI modes using Minimax and Alpha-Beta Pruning.
- - Module B: Tic-Tac-Toe with Human vs Human, Human vs AI and AI vs AI modes using Minimax and Alpha-Beta Pruning.
+- Module B: Tic-Tac-Toe with Human vs Human, Human vs AI and AI vs AI modes using Minimax and Alpha-Beta Pruning.
 
 The app includes a shared performance dashboard for decision time, nodes explored, solution length, and Alpha-Beta pruning rate.
 
