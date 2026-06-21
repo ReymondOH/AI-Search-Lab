@@ -1,0 +1,116 @@
+:root{
+  --bg: #f4f4f4;
+  --surface: #ffffff;
+  --text: #222222;
+  --muted: #777777;
+  --tile-bg: #3498db;
+  --blank-bg: #dddddd;
+  --cell-bg: #eeeeee;
+  --x-color: #c0392b;
+  --o-color: #1f618d;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+}
+
+/* Dark theme overrides */
+body.dark {
+  --bg: #111216;
+  --surface: #17181b;
+  --text: #e6e6e6;
+  --muted: #9a9a9a;
+  --tile-bg: #2a74a8;
+  --blank-bg: #2b2b2b;
+  --cell-bg: #1f2226;
+  --x-color: #ff7b7b;
+  --o-color: #7fb3ff;
+}
+
+nav button,
+section button {
+  margin: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+label,
+select,
+input {
+  margin: 6px;
+}
+
+select,
+input[type="file"] {
+  padding: 8px;
+}
+
+section {
+  background: var(--surface);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#puzzleBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.tile {
+  width: 90px;
+  height: 90px;
+  background: var(--tile-bg);
+  color: white;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.blank {
+  background: var(--blank-bg);
+}
+
+#tttBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.cell {
+  width: 90px;
+  height: 90px;
+  background: var(--cell-bg);
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-weight: bold;
+}
+
+.cell.x {
+  color: var(--x-color);
+}
+
+.cell.o {
+  color: var(--o-color);
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Search Lab</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <h1>AI Search Lab</h1>
+
+  <nav>
+    <button onclick="showModule('puzzle')">8-Puzzle Solver</button>
+    <button onclick="showModule('tictactoe')">Tic-Tac-Toe AI</button>
+    <label for="themeToggle" style="margin-left:12px;">Dark mode:</label>
+    <input type="checkbox" id="themeToggle" />
+  </nav>
+
+  <section id="dashboard">
+    <h2>Performance Dashboard</h2>
+    <p><strong>Algorithm:</strong> <span id="algorithm">None</span></p>
+    <p><strong>Decision Time:</strong> <span id="time">0 ms</span></p>
+    <p><strong>Nodes Explored:</strong> <span id="nodes">0</span></p>
+    <p><strong>Solution Length:</strong> <span id="solutionLength">0</span></p>
+    <p><strong>Pruning Rate:</strong> <span id="pruningRate">N/A</span></p>
+  </section>
+
+  <section id="puzzleModule">
+    <h2>Module A: 8-Puzzle Solver</h2>
+
+    <p id="puzzleStatus">Moves: 0</p>
+    <input type="file" id="imageUpload" accept=".png,.jpg,.jpeg">
+
+    <div id="puzzleBoard"></div>
+
+    <button onclick="resetPuzzle()">Reset Test Puzzle</button>
+    <button onclick="shufflePuzzle()">Shuffle</button>
+    <button onclick="undoPuzzle()">Undo</button>
+    <button id="puzzlePauseBtn" onclick="togglePuzzlePause()">Pause</button>
+    <label for="puzzleAlgorithm">Algorithm:</label>
+    <select id="puzzleAlgorithm">
+      <option value="bfs">BFS</option>
+      <option value="dijkstra">Dijkstra</option>
+      <option value="astar">A*</option>
+      <option value="greedy">Greedy Best-First</option>
+      <option value="idastar">IDA*</option>
+    </select>
+    <button onclick="solveSelectedPuzzle()">Solve</button>
+  </section>
+
+  <section id="tictactoeModule" class="hidden">
+    <h2>Module B: Tic-Tac-Toe AI</h2>
+
+    <p id="tttStatus">Your turn. You are X.</p>
+
+    <label for="gameMode">Game mode:</label>
+    <select id="gameMode">
+      <option value="human-human">Human vs Human</option>
+      <option value="human-ai" selected>Human vs AI</option>
+      <option value="ai-ai">AI vs AI</option>
+    </select>
+
+    <label for="firstPlayer">First player (when Human vs AI):</label>
+    <select id="firstPlayer">
+      <option value="human">Human</option>
+      <option value="ai">AI</option>
+    </select>
+
+    <label for="humanAiAlgorithm">Human vs AI algorithm:</label>
+    <select id="humanAiAlgorithm">
+      <option value="alphabeta">Alpha-Beta</option>
+      <option value="minimax">Minimax</option>
+    </select>
+
+    <div id="tttBoard"></div>
+
+    <button onclick="resetTicTacToe()">Restart</button>
+
+    <label>X AI:</label>
+<select id="xAlgorithm">
+  <option value="minimax">Minimax</option>
+  <option value="alphabeta">Alpha-Beta</option>
+    </select>
+
+    <label>O AI:</label>
+<select id="oAlgorithm">
+    <option value="minimax">Minimax</option>
+    <option value="alphabeta">Alpha-Beta</option>
+</select>
+    <button onclick="startAIVsAI()">AI vs AI Auto-play</button>
+    <button id="aiPauseBtn" onclick="(aiPaused?resumeAIVsAI():pauseAIVsAI())">Pause</button>
+    <button id="aiStopBtn" onclick="stopAIVsAI()">Stop</button>
+
+    <label for="aiSpeedRange">Speed:</label>
+    <input id="aiSpeedRange" type="range" min="100" max="2000" step="100" value="800" oninput="setAISpeed(parseInt(this.value))">
+    <span id="aiSpeedValue">800ms</span>
+  </section>
+
+  <script src="src/app.js"></script>
+</body>
+</html>
