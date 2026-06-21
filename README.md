@@ -24,10 +24,15 @@ The UI includes a Dark mode toggle in the navigation; the choice is persisted in
 
 ## Algorithms Implemented
 
+### 8-Puzzle Search Algorithms
 - BFS: blind search for the 8-puzzle.
 - Dijkstra: uniform-cost search for the 8-puzzle.
 - A*: informed 8-puzzle search using Manhattan distance.
-- Minimax: adversarial game-tree search for Tic-Tac-Toe.
+- Greedy Best-First Search: heuristic-driven search that expands the state estimated to be closest to the goal.
+- IDA* (Iterative Deepening A*): memory-efficient heuristic search that combines A* evaluation with iterative deepening.
+
+### Tic-Tac-Toe Search Algorithms
+- Minimax: adversarial game-tree search for optimal play.
 - Alpha-Beta Pruning: Minimax with pruning to avoid unnecessary branches.
 
 ## Heuristic Justification
@@ -62,7 +67,7 @@ On the standardized 8-puzzle start state `[[8,1,3],[4,0,2],[7,6,5]]`, all three 
 
 On the standardized Tic-Tac-Toe test, empty board with AI first as X, Minimax explored 549,945 nodes for the first move. Alpha-Beta explored 30,709 nodes for the same first move, which means it avoided 519,236 nodes, or about 94% of the plain Minimax work. The selected first move can still lead to a draw with optimal play, but Alpha-Beta reaches that decision with far less search.
 
-For trade-offs, BFS is complete and optimal for unit-cost moves, but its time and space grow exponentially by depth. Dijkstra is complete and optimal with nonnegative costs, but in this unit-cost puzzle it adds overhead without improving the result over BFS. A* is complete and optimal when using an admissible heuristic, and it can greatly reduce time and space, though it still may use a lot of memory on larger puzzles. Minimax is complete for finite games and optimal against an optimal opponent, but its time cost grows with the full game tree. Alpha-Beta returns the same optimal move as Minimax while reducing time through pruning, though its effectiveness depends on move ordering; it still has the same worst-case space pattern as depth-first Minimax.
+For trade-offs, BFS is complete and optimal for unit-cost moves, but its time and space grow exponentially with depth. Dijkstra is complete and optimal with nonnegative costs, but in this unit-cost puzzle it adds overhead without improving the result over BFS. A* is complete and optimal when using an admissible heuristic and often explores far fewer states than uninformed methods. Greedy Best-First Search can be extremely fast because it follows the heuristic directly, but it is not guaranteed to find the shortest solution. IDA* maintains A*'s optimality while using much less memory, though it may spend additional time revisiting states during successive iterations. Minimax is complete for finite games and optimal against an optimal opponent, but its time cost grows with the full game tree. Alpha-Beta returns the same optimal move as Minimax while reducing time through pruning, though its effectiveness depends on move ordering.
 
 ## Credits
 
